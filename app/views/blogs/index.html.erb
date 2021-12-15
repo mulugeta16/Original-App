@@ -1,31 +1,51 @@
 <p id="notice"><%= notice %></p>
+<main>
+  <!--Main layout-->
+  <div class="container"><h4 class="text-center"> All worlds trending football News 
+    <%= link_to 'Create a New Blog', new_blog_path, class:'btn btn-secondary btn-sm ml-5' %>
+  </h4>
+    <hr class="extra-margins">
+    <!--Second row-->
+    <div class="row">
+      <!--First columnn-->
+      <% @blogs.each do |blog| %>
+      <div class="col-md-4 pb-3">
+        <!--Card-->
+        <div class="card h-100">
 
-<h1>Blogs</h1>
+          <!--Card image-->
+          <div class="view overlay hm-white-slight">
+            <td><%= image_tag(blog.image_url,class:"img-fluid", alt:"") if blog.image.present? %></td>
+            <a href="#">
+              <div class="mask"></div>
+            </a>
+          </div>
+          <!--/.Card image-->
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <!--Card content-->
+          <div class="card-block p-3">
+            <!--Title-->
+            <h4 class="card-title"><%= blog.title %></h4>
+            <!--Text-->
+            <p class="card-text"><%= blog.content %></p>
+            <p class='text-danger'>likes <%= blog.favorites.count %> comments <%= blog.comments.count %></p>
+            <%= link_to 'Read more', blog, class:"btn btn-dark btn-sm" %>
+            <% if current_user.id == blog.user_id %>
+              <%= link_to 'Edit', edit_blog_path(blog), class:"btn btn-dark btn-sm" %>
+              <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-dark text-danger btn-sm" %>
+            <% end %>  
+          </div>
+          <!--/.Card content-->
 
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.content %></td>
-        <p><%= image_tag(blog.image_url) if blog.image.present? %></p>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+        <!--/.Card-->
+      </div>
+      <% end %>
+      <!--First columnn-->
+    </div>
+    <!--/.Second row-->
+  </div>
+  <!--/.Main layout-->
+</main>
 
 <br>
-
-<%= link_to 'New Blog', new_blog_path %>

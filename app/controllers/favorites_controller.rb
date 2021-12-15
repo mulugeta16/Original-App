@@ -1,22 +1,17 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   def index
       @favorites = current_user.favorites
     end
     def create
-      @blog = Blog.find(params[:blog_id])
-      favorite = current_user.favorites.build(blog_id: params[:blog_id])
-      favorite.save
+      favorite = current_user.favorites.create(blog_id: params[:blog_id])
+      redirect_to blogs_path, notice: "You have Liked #{favorite.blog.user.email}'s post"
     end
     def destroy
-      @blog = Blog.find(params[:blog_id])
-      favorite = Favorite.find_by(blog_id: params[:blog_id], user_id: current_user.id)
-      favorite.destroy
-      if request.referer&.include?('/blogs')
-        respond_to do |format|
-          format.js { @current_page = "index" }
-        end
-      end
+      favorite = current_user.favorites.find_by(id: params[:id]).destroy
+      redirect_to blogs_path, notice: "You have Unliked #{favorite.blog.user.email}'s post"
+    end
+    def index
+      @favorites = current_user.favorites
     end
   end

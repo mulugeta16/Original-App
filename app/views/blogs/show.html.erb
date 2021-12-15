@@ -1,34 +1,78 @@
+<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<main>
+  <!--Main layout-->
+  <div class="container">
+    <hr class="extra-margins">
+    <h4 class="text-center"> Latest News </h4>
+    <!--Second row-->
+    <div class="row">
+      <!--First columnn-->
+      
+      <div class="col-md-12 pb-3">
+        <!--Card-->
+        <div class="card h-100">
 
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
+          <!--Card image-->
+          <div class="view overlay hm-white-slight">
+            <td><%= image_tag(@blog.image_url,class:"img-fluid", alt:"") if @blog.image.present? %></td>
+            <a href="#">
+              <div class="mask"></div>
+            </a>
+          </div>
+          <!--/.Card image-->
 
-<p>
-  <strong>Image:</strong>
-<%= image_tag @blog.image_url, class:'show_image' if @blog.image.present?  %>
-</p>
-<h3>Comments</h3>
+          <!--Card content-->
+          <div class="card-block p-3">
+            <!--Title-->
+            <h4 class="card-title"><%= @blog.title %></h4>
+            <!--Text-->
+            <p class="card-text"><%= @blog.content %></p>
+            
+            <%= link_to 'Edit', edit_blog_path(@blog), class:"btn btn-dark btn-sm" %> |
+            <%= link_to 'Back', blogs_path, class:"btn btn-dark btn-sm" %>
+            <% unless @blog.user_id == current_user.id %>
+
+            <% if @favorite.present? %>
+              <%= link_to 'Unlike', favorite_path(id: @favorite.id), method: :delete, class:'btn btn-danger' %>
+            <% else %>
+              <%= link_to 'Like', favorites_path(blog_id: @blog.id), method: :blog, class:'btn btn-primary'%>
+            <% end %>
+            <% end %>
+            Likes: <%= @blog.favorites.count %>
+
+          </div>
+          <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--First columnn-->
+    </div>
+    <!--/.Second row-->
+  </div>
+  <!--/.Main layout-->
+
+</main>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+
+  <div class="col-md-6 mt-5">
+
+<h3>List of Comments</h3>
 <% @comments.each do |comment| %>
   <div>
-    <strong><%= comment.user_id %></strong>
+    <strong><u><%= comment.user.email %></u></strong>
     <br>
     <p><%= comment.suggest %></p>
     <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   </div>
-  <% unless @blog.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'Not a favorite', favorite_path(id: @favorite.id), method: :delete, class:'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'Favorite', favorites_path(blog_id: @blog.id), method: :blog, class:'btn btn-primary'%>
-  <% end %>
-  <% end %>
-<% end %>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+  <% end %>  
+  <hr>
+<%= render partial: 'comments/form', locals: { comment: @comment } %><br>
+</div>
+</div>

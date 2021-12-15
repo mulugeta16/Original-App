@@ -12,17 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
   <div class="field">
-    <%= form.label :suggest %>
-    <%= form.text_area :suggest %>
+    <%= form.label :Your_Comment %>
+    <%= form.text_area :suggest, class:"form-control", placeholder:'Write your comment here' %>
   </div>
 <%= form.hidden_field :blog_id %>
 
     <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-dark btn-sm' %>
   </div>
 <% end %>

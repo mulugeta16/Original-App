@@ -1,84 +1,14 @@
-// Place all the styles related to the tops controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-html {
-  position: relative;
-  min-height: 100%;
+main {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  background-color: black;
+  color: gray;
 }
-body {
-  text-align: center;
+.extra-margins {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
 }
-li {
-    list-style:none;
-}
-ul {
-    padding:0;
-}
-.title {
-    font-size:20px;
-    font-weight:bold;
-    text-align:center;
-}
-.menu li {
-    background-color:#ff99ff;
-    color:#fff;
-    padding:5% 10%;
-    text-align:center;
-}
-.contents li {
-    background-color:#F3A7AB;
-    color:#fff;
-    padding:10% 5%;
-    box-sizing: border-box;
-    border: solid 1px #fff;
-}
-.topic li {
-    margin:1%;
-    border-bottom: dotted 1px #333333;
-}
-.container {
-    margin-top:20px;
-    padding-bottom: 100px;
-}
-header {
-  width: 100%;
-  background-color: #ff3300;
-  height: 54px;
-  margin: 0
 
-}
-header ul {
-  margin: 0 auto;
-  list-style: none;
-}
-header ul a {
-  display: block;
-  padding: 15px;
-  text-decoration: none;
-  color: white;
-}
-header li {
-  float: left;
-  width: auto;
-  font-size: 20px;
-}
-header ul:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-footer {
-  width: 100%;
-  background-color:#996600;
-  padding: 20px ;
-  color: black;
-  margin: auto;
-  padding-bottom: 10px;
-  font-size: 20px;
-  height: 54px;
-
-}
-.show_image {
-  width: 150px;
-  height: 150px;
+body{
+  background-color: black;
 }
