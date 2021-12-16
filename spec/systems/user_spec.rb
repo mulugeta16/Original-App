@@ -28,11 +28,6 @@ describe 'Session functionality test' do
         
       end
     end
-    context 'to be able to logout' do
-      it 'enables logout' do
-        click_on "Log Out"
-        
-      end
-    end
+    
   end
 end
