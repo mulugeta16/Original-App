@@ -7,6 +7,23 @@ class BlogsController < ApplicationController
     @blogs = Blog.all
   end
 
+  def index
+  
+    @blogs = if params[:term]
+     Blog.where('title LIKE ?', "%#{params[:term]}%")
+  else
+     @blogs = Blog.all
+  end
+          @search = Blog.ransack(params[:q])
+          if params[:q]
+          @blogs = @search.result
+          elsif params[:sort_price]
+          @blogs = Blog.all.order('price')
+          elsif params[:sort_age]
+          @blogs = Blog.all.order('age DESC')
+      end
+  end
+
   # GET /blogs/1 or /blogs/1.json
   def show
     @comments = @blog.comments.all

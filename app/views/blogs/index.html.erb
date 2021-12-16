@@ -4,6 +4,12 @@
   <div class="container"><h4 class="text-center"> All worlds trending football News 
     <%= link_to 'Create a New Blog', new_blog_path, class:'btn btn-secondary btn-sm ml-5' %>
   </h4>
+  <div class="search">
+  <%= form_tag(blogs_path, method: :get,style:'') do %>
+    <%= text_field_tag :term, params[:term],placeholder:'search by blog tile' %>
+    <%= submit_tag 'Search', name: nil %>
+   <% end %><br>
+   </div>
     <hr class="extra-margins">
     <!--Second row-->
     <div class="row">
