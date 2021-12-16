@@ -73,8 +73,12 @@
       </nav>
 
     </header>
-    <p id="notice"><%= notice %></p>
+    
+    
     <!--Main Navigation-->
+    <% if flash[:notice] %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+    <% end %>
     <%= yield %>
     
     <!--Footer-->
