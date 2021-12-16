@@ -47,10 +47,12 @@
             </li>
           </ul>
           <ul class="navbar-nav nav-flex-icons">
-            <% if current_user %>
+            <% if current_user && current_user.admin?%>
               <li class="nav-item">
                 <%= link_to "Admin", rails_admin_path, class:"nav-link test-white font-weight-bold", style:"color:yellow; background: gray; opacity:0.3" %>
               </li>
+              <% end %>
+              <% if current_user %>
               <li class="nav-item">
                 <%= link_to "Blogs", blogs_path, class:"nav-link", style:"color:yellow" %>
               </li>    
