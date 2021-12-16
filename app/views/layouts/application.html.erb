@@ -34,7 +34,8 @@
               <%= link_to "Home", root_path, class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="color:yellow" href="#">News</a>
+              
+              <%= link_to "News", blogs_path, class:"nav-link", style:"color:yellow" %>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="color:yellow" href="#">Sports</a>
@@ -46,13 +47,16 @@
           <ul class="navbar-nav nav-flex-icons">
             <% if current_user %>
               <li class="nav-item">
-                <%= link_to "Admin", rails_admin_path, class:"nav-link btn-success", style:"color:yellow" %>
+                <%= link_to "Admin", rails_admin_path, class:"nav-link test-white font-weight-bold", style:"color:yellow; background: gray; opacity:0.3" %>
               </li>
               <li class="nav-item">
                 <%= link_to "Blogs", blogs_path, class:"nav-link", style:"color:yellow" %>
               </li>    
               <li class="nav-item">
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link", style:"color:red" %>
+                <%= link_to 'Edit Profile', edit_user_registration_path, class:"nav-link", style:"color:yellow" %>
+              </li>  
+              <li class="nav-item">
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class:"nav-link btn btn-sm btn-rounded btn-outline-danger", style:"color:red; background-color:gray" %>
               </li>  
             <% else %>
             <li class="nav-item">
@@ -82,15 +86,8 @@
       <!--Footer Links-->
       <div class="container">
         <div class="row">
-
           <!--First column-->
-          <div class="col-md-6">
-            <h5 class="title text-danger">Sunshine Sports</h5> &copy; 2021 MULUGETA Wale </a>
-
-          </div>
-          <!--/.First column-->
-
-          <!--Second column-->
+          <h5 class="title text-danger">Sunshine Sports &nbsp; </h5>&copy; 2021 MULUGETA Wale </a>
           <!--/.Second column-->
         </div>
       </div>
