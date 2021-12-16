@@ -7,12 +7,12 @@
 
   <div class="field">
     <%= f.label :names %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" , class:'form-control', placeholder:'Enter your names' %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" , class:'form-control text-white', placeholder:'Enter your names' %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:'form-control',placeholder:'Your email' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:'form-control text-white',placeholder:'Your email' %>
   </div>
 
   <div class="field">
@@ -20,12 +20,12 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:'form-control', placeholder:'Enter your password' %>
+    <%= f.password_field :password, autocomplete: "new-password", class:'form-control text-white', placeholder:'Enter your password' %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control', placeholder:'Confirm your password' %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'form-control text-white', placeholder:'Confirm your password' %>
   </div>
 
   <div class="actions">

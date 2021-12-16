@@ -5,12 +5,12 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control', placeholder:'Enter your email' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control text-white', placeholder:'Enter your email' %>
     </div>
 
     <div class="field">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class:'form-control', placeholder:'FIll your password' %>
+      <%= f.password_field :password, autocomplete: "current-password", class:'form-control text-white', placeholder:'FIll your password' %>
     </div>
 
     <% if devise_mapping.rememberable? %>
