@@ -20,9 +20,11 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
     <!--Main Navigation-->
     <header>
+
       <nav class="navbar navbar-expand-lg navbar-dark primary-color-dark">
         <a class="navbar-brand" href="#"><strong class="text-danger font-weight-bold">Sunrise Sports</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,6 +73,7 @@
       </nav>
 
     </header>
+    <p id="notice"><%= notice %></p>
     <!--Main Navigation-->
     <%= yield %>
     
